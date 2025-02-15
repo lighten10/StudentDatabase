@@ -7,9 +7,6 @@
 using namespace std;
 
 namespace Database{
-    
-
-    
     class Student {
         private : 
         string name;
@@ -54,7 +51,7 @@ namespace Database{
                 getline(ss,marksStr,',');
                 int roll = stoi(rollStr);
                 int marks = stoi(marksStr);
-                students.push_back(make_shared<Student>(roll,name,marks));
+                students.push_back(make_shared<Student>(name,roll,marks));
             }
             inFile.close();
 
@@ -67,8 +64,14 @@ namespace Database{
                 return ;
             }
             for(const auto& student : students){
-                outFile << student-> << '\n' ; 
+                outFile << student->toString() << '\n' ; 
             }
+            outFile.close();
+            cout<<"students added to File successfully";
+        }
+
+        void addStudent(string name , int rollNumber , float marks){
+            students.push_back(make_shared<Student>())
         }
 
 
