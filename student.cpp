@@ -7,6 +7,7 @@
 using namespace std;
 
 namespace Database{
+
     class Student {
         private : 
         string name;
@@ -20,7 +21,7 @@ namespace Database{
         void display() const {
             cout<<"Roll Number :"<<rollNumber
                <<"name :"<<name
-               <<"marks : "<<marks; 
+               <<"marks : "<<marks<<endl; 
             }
 
         //== operator overloading to compare student
@@ -71,13 +72,36 @@ namespace Database{
         }
 
         void addStudent(string name , int rollNumber , float marks){
-            students.push_back(make_shared<Student>())
+            students.push_back(make_shared<Student>(name,rollNumber,marks));
+            cout<<"Student added successfully";
         }
 
+        void displayAllStudents(){
+            if(!students.empty()){
+                for(const auto& student : students ){
+                    student->display();
+                }
+            }
+            return ;
+        }
 
+        void searchStudent(int roll){
+            for(const auto& student : students){
+                if(student->rollNumber == roll){
+                    cout<<"Student Found"<<endl;
+                    return ;
+                }
+            }
+            cout<<"Student Not Found"<<endl;
 
-    }
+        }
+        
+
 
 
     };
+
+
+    };
+
 
